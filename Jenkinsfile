@@ -7,13 +7,30 @@ pipeline {
 
     stages {
 
-        stage('Check Environment') {
+        stage('Checkout') {
             steps {
-                sh 'echo "PATH=$PATH"'
-                sh 'which node'
-                sh 'which npm'
+                echo 'Source code downloaded from GitHub.'
+            }
+        }
+
+        stage('Build') {
+            steps {
                 sh 'node --version'
                 sh 'npm --version'
+            }
+        }
+
+        stage('Install Dependencies') {
+            steps {
+                sh 'npm install'
+            }
+        }
+
+        stage('Run Application Test') {
+            steps {
+                sh 'node app.js &'
+                sh 'sleep 5'
+                sh 'pkill -f "node app.js" || true'
             }
         }
     }
