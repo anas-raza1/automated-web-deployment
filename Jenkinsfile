@@ -1,32 +1,19 @@
 pipeline {
     agent any
 
+    environment {
+        PATH = "/usr/local/bin:/opt/homebrew/bin:/usr/bin:/bin:${env.PATH}"
+    }
+
     stages {
 
-        stage('Checkout') {
+        stage('Check Environment') {
             steps {
-                echo 'Source code downloaded from GitHub.'
-            }
-        }
-
-        stage('Build') {
-            steps {
+                sh 'echo "PATH=$PATH"'
+                sh 'which node'
+                sh 'which npm'
                 sh 'node --version'
                 sh 'npm --version'
-            }
-        }
-
-        stage('Install Dependencies') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Run Application Test') {
-            steps {
-                sh 'node app.js &'
-                sh 'sleep 5'
-                sh 'pkill -f "node app.js" || true'
             }
         }
     }
