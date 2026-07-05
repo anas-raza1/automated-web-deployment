@@ -1,8 +1,7 @@
 # 🚀 Automated Web Application Deployment using GitHub, Jenkins & Docker
 
 > A complete CI/CD pipeline that automatically builds and deploys a
-> Node.js web application using **GitHub**, **Jenkins**, and **Docker**
-> on **macOS (Apple Silicon M1)**.
+> Node.js web application using **GitHub**, **Jenkins**, and **Docker**.
 
 ## 📌 Project Overview
 
